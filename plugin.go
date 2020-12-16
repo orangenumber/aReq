@@ -40,7 +40,7 @@ func (p *plugin) AcceptEncoding(encType string) PluginFn {
 		},
 		FnPost: func(d *AReq) {
 			if d.Res.Header.Get("Content-Encoding") == encType {
-				println("ct", d.Res.ContentLength)
+				// println("ct", d.Res.ContentLength)
 				d.Logf("[%s] received %s response (%d bytes)", Name, encType, d.Res.ContentLength)
 				var err error
 				if d.Res.Body, err = gzip.NewReader(d.Res.Body); err != nil {
